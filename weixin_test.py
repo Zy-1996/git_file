@@ -1,6 +1,8 @@
 import time
 from selenium import webdriver
 from selenium.common.exceptions import NoSuchElementException
+from multiprocessing import  Process
+
 
 class GrabVotes ():
 
@@ -44,8 +46,8 @@ class GrabVotes ():
 
                     tag1.clear ()
                     tag2.clear ()
-                    tag1.send_keys ( name )
-                    tag2.send_keys ( id )
+                    tag1.send_keys ( self.name )
+                    tag2.send_keys ( self.id )
                     button.click ()
                     print ( 'ok' )
                     time.sleep ( 5 )
@@ -53,17 +55,20 @@ class GrabVotes ():
 
                 break
 
+def main():
 
-if __name__ == '__main__':
     url = 'http://ndgiam1lsekpes40.mikecrm.com/EjwsjIi'
     User_agent = 'Mozilla/5.0 (Linux; Android 5.0; SM-G900P Build/LRX21T) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0Chrome/33.0.0.0 Mobile Safari/537.36 MicroMessenger/6.0.0.54_r849063.501 NetType/WIFI '
     date = '2019-12-19 23:00:04'
     name = '黄凯'
     id = '2111904371'
     proxy = ''
-
     A = GrabVotes ( date, User_agent, url, name, id, proxy )
     A.grab_votes ()
+
+if __name__ == '__main__':
+    main()
+
 
 
 
